@@ -105,8 +105,7 @@ function mac(ip, cb) {
     }
 
     if (chunks[3] !== 'no') {
-      var mac = chunks[3].replace(/^0:/g, '00:').replace(/:0:/g, ':00:').replace(/:0$/g, ':00');
-      return cb(null, mac);
+      return cb(null, chunks[3]);
     }
 
     cb(null, false);

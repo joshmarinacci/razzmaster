@@ -62,7 +62,8 @@ var whitelist = [
     'b8:27:eb', // rasberry pi ethernet
     '00:e0:4c', // realtek
     '00:14:78', // tp-link
-    '00:0c:43'  // ralink
+    '00:0c:43',  // ralink
+    '00:0f:60', // canakit/ralink
 ];
 
 var interfaces = os.networkInterfaces();
@@ -79,22 +80,47 @@ for(var name in interfaces) {
 //filter out loopback
 subnets = subnets.filter(function(n) { return n !== '127.0.0.1'; });
 
-console.log("subnets = ", subnets);
+function scanSubnet(addr) {
+    var subnet = addr.substr(0, addr.lastIndexOf('.')) || false;
+    //console.log("my ip first = ", addr);
+    //console.log("my subnet first = ", subnet);
+    var arr = range(0,30).map(function(i) {
+        return testHost(subnet+'.'+i);
+    });
+    var coll = [];
+    Q.all(arr).then(function(val){
+        var valid = val.filter(function(vals) {  return vals[1] !== '(incomplete)';  });
+        valid.forEach(function(val){
+            var mac = val[1];
+            var mac2 = formatMac(mac)
+            var match = whitelist.includes(mac2.substring(0,8));
+            console.log("mac = ", val[0], mac2, match);
+            if(match) coll.push({host:val[0],mac:mac2});
+        });
+    }).then(function() {
+        console.log("probable raspberry pi", coll);
+    }).done();
+}
 
-var addr = subnets[0];
-var subnet = addr.substr(0, addr.lastIndexOf('.')) || false;
-console.log("my ip first = ", addr);
-console.log("my subnet first = ", subnet);
+console.log("subnets = ", subnets);
+subnets.forEach(scanSubnet);
+
+function formatMac(mac) {
+    return mac.split(':').map(function(oct){
+        return ('00'+parseInt(oct,16).toString(16)).substr(-2);
+    }).join(':');
+}
 
 function testHost(host) {
     return Q.Promise(function(resolve,reject,notify) {
+        //console.log('sending out', host);
         //send out a ping packet
         ping(host, function () {
             //console.log('called back');
         });
         //listen to arp responses
         arp(host, function (err, mac) {
-            console.log("arp response = ", err, mac);
+            //console.log("arp response = ", host, err, mac);
             resolve([host,mac]);
         });
     })
@@ -107,14 +133,3 @@ function range(start,end) {
     }
     return arr;
 }
-
-var arr = range(0,10).map(function(i) {
-    return testHost(subnet+'.'+i);
-});
-Q.all(arr).then(function(val){
-    var valid = val.filter(function(vals) {  return vals[1] !== '(incomplete)';  });
-    valid.forEach(function(val){
-        console.log("mac address == ",val);
-        console.log("contains = " + whitelist.includes(val[1].substring(0,8)));
-    });
-}).done();

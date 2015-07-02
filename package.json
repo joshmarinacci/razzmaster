@@ -1,0 +1,24 @@
+{
+  "name": "razzmaster",
+  "version": "0.0.1",
+  "description": "Find and set up new Raspberry Pis on your network",
+  "main": "find.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshmarinacci/razzmaster.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshmarinacci/razzmaster/issues"
+  },
+  "homepage": "https://github.com/joshmarinacci/razzmaster#readme",
+  "dependencies": {
+    "ip": "^0.3.3",
+    "q": "^1.4.1",
+    "ssh2": "^0.4.9"
+  }
+}
