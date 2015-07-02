@@ -12,6 +12,18 @@ Raspberry Pi ethernet and wifi dongles. It will print a list of every
 MAC address it finds and whether it is likely to be a Raspberry Pi or not.
 
 
+# Blink your Raspberry Pi
+
+Just to make sure you are really connecting to the pi you think you are, make the
+green LED blink like this:
+
+```
+node blink --host 192.168.1.23 --username pi --password foo
+```
+
+Press ctrl-C to stop it.
+
+
 # Configure the Raspberry Pi:
 
 ```
