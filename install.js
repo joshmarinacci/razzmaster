@@ -17,6 +17,14 @@ function printHelp() {
 
 if(!args.config) return console.log("missing --config option");
 if(!args.port) args.port = 22;
+if(!args.username) {
+    console.log("using default username: 'pi'");
+    args.username = 'pi';
+}
+if(!args.password) {
+    console.log("using default password: 'raspberry'");
+    args.password = 'raspberry';
+}
 
 
 var config = JSON.parse(fs.readFileSync(args.config));

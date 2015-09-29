@@ -1,11 +1,6 @@
 {
     "packages":[
         "git",
-        "curl",
-        "bluez",
-        "bluez-hcidump","nodejs"
-    ],
-    "git":[
-        "https://github.com/joshmarinacci/amx.git"
+        "curl"
     ]
 }
