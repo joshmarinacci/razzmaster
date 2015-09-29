@@ -8,12 +8,20 @@ var args = common.splitArgs();
 
 if(!common.checkArgs(args)) return printHelp();
 if(!args.port) args.port = 22;
+if(!args.username) {
+    console.log("using default username: 'pi'");
+    args.username = 'pi';
+}
+if(!args.password) {
+    console.log("using default password: 'raspberry'");
+    args.password = 'raspberry';
+}
 
 function printHelp() {
     console.log("usage");
     console.log("node blink.js");
     console.log("  --host  192.168.1.3");
-    console.log("  --username pi");
+    console.log("  --username myusername");
     console.log("  --password mypass");
 }
 

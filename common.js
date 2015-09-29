@@ -21,8 +21,8 @@ exports.splitArgs = function() {
 
 exports.checkArgs = function(args) {
     if (!args.host) return missingArg('--host');
-    if (!args.username) return missingArg('--username');
-    if (!args.password) return missingArg('--password');
+    //if (!args.username) return missingArg('--username');
+    //if (!args.password) return missingArg('--password');
     return true;
 }
 
