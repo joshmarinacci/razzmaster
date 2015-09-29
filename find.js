@@ -17,7 +17,7 @@ console.log("my ip = ", ip);
 console.log("my subnet = ", subnet);
 */
 
-function setupPoly() {
+function setupPolyFill() {
     if (![].includes) {
         Array.prototype.includes = function(searchElement /*, fromIndex*/ ) {
             'use strict';
@@ -49,15 +49,8 @@ function setupPoly() {
 
 }
 
-setupPoly();
-/*
-var whitelist = [
-    /b8:27:eb/, // rasberry pi ethernet
-    /00:e0:4c/, // realtek
-    /00:14:78/, // tp-link
-    /00:0c:43/  // ralink
-];
-*/
+setupPolyFill();
+
 var whitelist = [
     'b8:27:eb', // rasberry pi ethernet
     '00:e0:4c', // realtek
