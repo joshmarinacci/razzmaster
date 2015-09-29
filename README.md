@@ -67,3 +67,40 @@ The `git` array is a list of git repos to fetch.
 * set extra/custom services to start on demand
 * set x in kiosk mode with chromium
 
+
+## A full headless install
+
+Yes, it is possible to start with a blank RaspberryPi and get it running on the network with your
+desired configuration without using a directly connected screen. You'll have to flash a Raspbian image
+directly to the flashcard first, since NOOBS requires a screen to use, but then you can do the rest
+with RazzMaster.
+
+first, download the raspbian image via torrent or direct download. this is a giant zip file which
+regular MacOSX unzip can't handle. If you unzip it from the command line you'll get an error about
+
+```
+need PK compat. v4.5 (can do v2.1)
+```
+
+So install p7zip via brew and unzip with that.
+
+```
+brew install p7zip
+7za x your_raspian_image_file.img
+```
+
+Then write the image to your SD card as described in the standard docs here
+
+https://www.raspberrypi.org/documentation/installation/installing-images/README.md
+
+now put the SD card in your Pi and boot it. Since it doesn't have any wifi access yet,
+you'll need to boot it with wired ethernet connected to your other computer or a router.
+Make sure the ethernet port is live before you boot the Pi. ex: if you are plugging the pi directly
+into a port on your Mac then you'll need to turn on internet sharing so that the Pi can get an IP address
+when it boots.
+
+let it boot for about 3 minutes (pi2) since it's going to load a full desktop environment.
+then run `node find`.
+
+
+
