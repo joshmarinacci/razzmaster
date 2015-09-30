@@ -99,6 +99,7 @@ console.log("subnets = ", subnets);
 subnets.forEach(scanSubnet);
 
 function formatMac(mac) {
+    if(!mac) return "";
     return mac.split(':').map(function(oct){
         return ('00'+parseInt(oct,16).toString(16)).substr(-2);
     }).join(':');
