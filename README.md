@@ -60,12 +60,13 @@ The `git` array is a list of git repos to fetch.
 ## Todo
 
 
-* set the wifi info
+* -- done -- set the wifi info
 * set the hostname
 * change the default users password
 * configure node for proper npm -g support
 * set extra/custom services to start on demand
 * set x in kiosk mode with chromium
+* disable starting x
 
 
 ## A full headless install
