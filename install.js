@@ -8,9 +8,7 @@ if(!common.checkArgs(args)) return printHelp();
 
 function printHelp() {
     console.log("usage");
-    console.log("node install.js");
-    console.log("  --config  configfile.json")
-    console.log("  --host  192.168.1.3");
+    console.log("razzmaster install --config  configfile.json --host  192.168.1.3");
     console.log("  --username pi");
     console.log("  --password mypass");
 }

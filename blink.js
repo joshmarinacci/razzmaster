@@ -19,8 +19,7 @@ if(!args.password) {
 
 function printHelp() {
     console.log("usage");
-    console.log("node blink.js");
-    console.log("  --host  192.168.1.3");
+    console.log("razzmaster blink --host  192.168.1.3");
     console.log("  --username myusername");
     console.log("  --password mypass");
 }

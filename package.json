@@ -2,6 +2,7 @@
   "name": "razzmaster",
   "version": "0.0.2",
   "description": "Find and set up new Raspberry Pis on your network",
+  "bin":"main.js",
   "main": "find.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

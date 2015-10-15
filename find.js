@@ -91,7 +91,8 @@ function scanSubnet(addr) {
             if(match) coll.push({host:val[0],mac:mac2});
         });
     }).then(function() {
-        console.log("probable raspberry pi", coll);
+        console.log("probable raspberry pis", coll);
+        if(coll.length < 1) console.log("   could not find any pis.");
     }).done();
 }
 
