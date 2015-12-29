@@ -57,6 +57,20 @@ treated special. It will install from nodesource.org instead of the regular repo
 The `git` array is a list of git repos to fetch.
 
 
+### Setup Wifi
+
+Add a 'wifi' section like this:
+
+```json
+{
+   "wifi": {
+       "ssid":"myrouter",
+       "password":"mypassword"
+   }
+}
+```
+   
+
 ## Todo
 
 
