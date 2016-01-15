@@ -11,7 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/joshmarinacci/razzmaster.git"
   },
-  "author": "",
+  "author": {
+    "name": "Josh Marinacci",
+    "email": "joshua@marinacci.org"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/joshmarinacci/razzmaster/issues"

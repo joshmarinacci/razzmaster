@@ -4,6 +4,9 @@
  * Created by josh on 10/14/15.
  */
 
+var path = require('path');
+var fs   = require('fs');
+
 function main() {
     if(process.argv.length < 3) return printHelp();
 
@@ -11,6 +14,7 @@ function main() {
     if(command == 'scan')    return startScan();
     if(command == 'blink')   return startBlink();
     if(command == 'install') return startInstall();
+    if(command == 'version') return startVersion();
 
     console.log("unknown command '"+command+"'");
     return printHelp();
@@ -43,4 +47,11 @@ function startBlink() {
 
 function startInstall() {
     require('./install');
+}
+
+function startVersion() {
+    var package_json = JSON.parse(fs.readFileSync(path.join(__dirname,'package.json')).toString());
+    console.log(package_json.name + ' version ' + package_json.version);
+    console.log("created by:",package_json.author.name, ",", package_json.author.email);
+    console.log("file bugs:", package_json.bugs.url);
 }
