@@ -1,15 +1,32 @@
-# razzmaster
-Find and set up new Raspberry Pis on your network
+# RazzMaster
+Find and set up new Raspberry Pis on your network.
 
+
+RazzMaster can do the following tasks:
+
+ * scan the local network for probable Raspberry Pis
+ * blink the LED on the Pi
+ * report hardware and software version of the Pi
+ * install packages through apt-get and node
+ * setup wifi
+
+
+# Installation
+
+```
+npm install -g razzmaster
+razzmaster version
+```
 
 # Scan for Raspberry Pis on your network
 ```
-node find
+razzmaster scan
 ```
 
-This will scan for probably raspberry pis on your network using MAC addresses for common
+This will scan for probable Raspberry Pis on your network using MAC addresses for common
 Raspberry Pi ethernet and wifi dongles. It will print a list of every
-MAC address it finds and whether it is likely to be a Raspberry Pi or not.
+MAC address it finds and whether it is likely to be a Raspberry Pi or not.  Sometimes
+it may not find the Pi right away. If you don't see it, just run the scan again a few more times.
 
 
 # Blink your Raspberry Pi
@@ -18,16 +35,48 @@ Just to make sure you are really connecting to the pi you think you are, make th
 green LED blink like this:
 
 ```
-node blink --host 192.168.1.23 --username pi --password foo
+razzmaster blink --host 192.168.1.23 --username pi --password raspberry
 ```
 
 Press ctrl-C to stop it.
+
+Note that if you do not specify a username and password Razzmaster will use the default Raspbian ones of pi/raspberry.
+If you haven't changed the settings then you can leave these options off like this:
+
+```
+razzmaster blink --host 192.168.1.23
+```
+
+# Get Info
+
+To get the hardware and software versions of your Raspberry Pi
+
+```
+razzmaster info --host 192.168.1.18
+```
+
+This will print the model and OS info.  On my Raspberry Pi 2 running Raspbian Jesse I get:
+ 
+```
+Raspberry Pi 2 Model B Rev 1.1
+PRETTY_NAME="Raspbian GNU/Linux 8 (jessie)"
+NAME="Raspbian GNU/Linux"
+VERSION_ID="8"
+VERSION="8 (jessie)"
+ID=raspbian
+ID_LIKE=debian
+HOME_URL="http://www.raspbian.org/"
+SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
+BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
+
+Linux raspberrypi 4.1.7-v7+ #817 SMP PREEMPT Sat Sep 19 15:32:00 BST 2015 armv7l GNU/Linux 
+```
 
 
 # Configure the Raspberry Pi:
 
 ```
-node install --config config.json --host 192.168.1.23 --username pi --password foo
+razzmaster install --config config.json --host 192.168.1.23 --username pi --password foo
 ```
 
 This command will ssh into the Raspberry Pi with the host ip address, username, and password
@@ -86,7 +135,7 @@ Add a 'wifi' section like this:
 ## A full headless install
 
 Yes, it is possible to start with a blank RaspberryPi and get it running on the network with your
-desired configuration without using a directly connected screen. You'll have to flash a Raspbian image
+desired configuration *without* using a directly connected screen. You'll have to flash a Raspbian image
 directly to the flashcard first, since NOOBS requires a screen to use, but then you can do the rest
 with RazzMaster.
 
