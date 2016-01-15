@@ -57,6 +57,7 @@ var whitelist = [
     '00:14:78', // tp-link
     '00:0c:43',  // ralink
     '00:0f:60', // canakit/ralink
+    'e0:91:53', //cirago wifi/bt combo http://cirago.com/bta7300.php
 ];
 
 var interfaces = os.networkInterfaces();
