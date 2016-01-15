@@ -15,6 +15,7 @@ function main() {
     if(command == 'blink')   return startBlink();
     if(command == 'install') return startInstall();
     if(command == 'version') return startVersion();
+    if(command == 'info')    return startInfo();
 
     console.log("unknown command '"+command+"'");
     return printHelp();
@@ -54,4 +55,8 @@ function startVersion() {
     console.log(package_json.name + ' version ' + package_json.version);
     console.log("created by:",package_json.author.name, ",", package_json.author.email);
     console.log("file bugs:", package_json.bugs.url);
+}
+
+function startInfo() {
+    require('./info.js');
 }

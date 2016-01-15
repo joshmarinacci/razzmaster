@@ -50,7 +50,7 @@ exports.delay = function(dur) {
 exports.execRemote = function(conn, command) {
     return Q.Promise(function (resolve, reject, notify) {
         //console.log("start",command);
-        console.log("===== STARTED  " + command);
+        //console.log("===== STARTED  " + command);
         conn.exec(command, function (err, stream) {
             if (err) {
                 console.log('error');
@@ -64,7 +64,7 @@ exports.execRemote = function(conn, command) {
 
             stream.on('close', function (code, signal) {
                 //console.log('Stream :: close :: code: ' + code + ', signal: ' + signal);
-                console.log('===== FINISHED ' + command);
+                //console.log('===== FINISHED ' + command);
                 resolve(null);
             });
         });
