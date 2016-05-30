@@ -39,6 +39,9 @@ function printHelp() {
     console.log("most commands take optional username and password arguments ");
     console.log("    --username myusername  ");
     console.log("    --password mypass");
+    console.log("");
+    console.log("for detailed instructions see");
+    console.log("https://github.com/joshmarinacci/razzmaster");
 }
 
 function startScan() {

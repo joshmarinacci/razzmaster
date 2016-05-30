@@ -51,7 +51,7 @@ function processInstalls(config) {
         config.packages.forEach(function (pak) {
             if (pak == 'nodejs') {
                 //install node
-                funcs.push(execRemote(conn, 'curl -sL https://deb.nodesource.com/setup | sudo bash -'))
+                funcs.push(execRemote(conn, 'curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -'));
                 funcs.push(execRemote(conn, 'sudo apt-get install -y nodejs'));
                 funcs.push(execRemote(conn, 'node --version'));
                 funcs.push(execRemote(conn, 'npm --version'));
