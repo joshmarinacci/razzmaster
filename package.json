@@ -1,6 +1,6 @@
 {
   "name": "razzmaster",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Find and set up new Raspberry Pis on your network",
   "bin":"./main.js",
   "main": "find.js",
