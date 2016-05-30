@@ -1,7 +1,6 @@
 /**
  * Created by josh on 7/2/15.
  */
-var Q = require('q');
 var common = require('./common');
 var Client = require('ssh2').Client;
 var args = common.splitArgs();
@@ -30,13 +29,13 @@ var conn = new Client();
 
 process.on( 'SIGINT', function() {
     console.log( "stopping the green blinking" );
-    common.execRemote(conn, 'echo "echo none > /sys/devices/soc/soc\:leds/leds/led0/trigger" | sudo sh').then(function(){
+    common.execRemote(conn, 'echo "echo none > /sys/devices/platform/soc/soc\:leds/leds/led0/trigger" | sudo sh').then(function(){
         conn.end();
     });
 });
 
 conn.on('ready', function() {
-    common.execRemote(conn, 'echo "echo heartbeat > /sys/devices/soc/soc\:leds/leds/led0/trigger" | sudo sh')
+    common.execRemote(conn, 'echo "echo heartbeat > /sys/devices/platform/soc/soc\:leds/leds/led0/trigger" | sudo sh')
         .then(function() {
             console.log("Your raspberry pi should be blinking green.\n"
                 +"press control C to stop blinking and quit");

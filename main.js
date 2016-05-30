@@ -30,7 +30,11 @@ function printHelp() {
     console.log("  blink LED of a pi");
     console.log("       razzmaster blink --host 192.168.1.3");
     console.log("  install using config file");
-    console.log("       razzmaster install --host 192.168.1.3 --config config.json")
+    console.log("       razzmaster install --host 192.168.1.3 --config config.json");
+    console.log("  print info about pi");
+    console.log("       razzmaster info --host 192.168.1.3");
+    console.log("  print info about razzmaster");
+    console.log("       razzmaster version");
     console.log("");
     console.log("most commands take optional username and password arguments ");
     console.log("    --username myusername  ");
